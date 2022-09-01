@@ -32,14 +32,14 @@ module.exports = ({ strapi }) => ({
 
 		// ensure the reference field has data
 		let referenceFieldValues = references
-			.filter((r) => typeof data[r] !== 'undefined' && data[r].length)
+			.filter((r) => typeof data[r] !== 'undefined' && data[r]?.length)
 			.map((r) => data[r]);
 
 
 		let shouldUpdate = true
 		if (current) {
 			let currentReferenceFieldValues = references
-				.filter((r) => typeof current[r] !== 'undefined' && current[r].length)
+				.filter((r) => typeof current[r] !== 'undefined' && current[r]?.length)
 				.map((r) => current[r]);
 
 			if (JSON.stringify(referenceFieldValues) == JSON.stringify(currentReferenceFieldValues)) {
